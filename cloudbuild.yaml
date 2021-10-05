@@ -17,7 +17,7 @@ steps:
   - 'gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME-$SHORT_SHA'
 
 # Deploy image to Google Cloud Run
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'gcr.io/cloud-builders/gcloud'
   id: Deploy Image to Cloud Run
   args:
   - 'run'
