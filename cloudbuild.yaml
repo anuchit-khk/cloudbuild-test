@@ -30,3 +30,6 @@ steps:
   - 'platform'
   - 'managed'
   - '--allow-unauthenticated'
+
+options:
+  substitution_option: 'ALLOW_LOOSE'
