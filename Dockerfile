@@ -5,5 +5,5 @@ RUN apt-get update && \
 
 COPY myapp /var/www/html
 
+ENV PORT 80
 EXPOSE 80
-EXPOSE 443
