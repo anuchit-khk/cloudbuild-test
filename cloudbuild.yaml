@@ -25,6 +25,8 @@ steps:
   - 'oat-cloud-build'
   - '--image'
   - 'gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME-$SHORT_SHA'
+  - '--port'
+  - '8080'
   - '--region'
   - 'asia-southeast1'
   - '--platform'
