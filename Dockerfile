@@ -1,13 +1,24 @@
-FROM python:3.6-slim
+# Pull base image.
+FROM dockerfile/ubuntu
 
-#RUN apk add --update g++ gcc python3-dev py-psutil linux-headers curl bash py-pip
+# Install Nginx.
+RUN \
+  add-apt-repository -y ppa:nginx/stable && \
+  apt-get update && \
+  apt-get install -y nginx && \
+  rm -rf /var/lib/apt/lists/* && \
+  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
+  chown -R www-data:www-data /var/lib/nginx
 
-#ADD requirements.txt /requirements.txt
-#RUN pip3 install -r requirements.txt
+# Define mountable directories.
+VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
 
-ADD . /script
+# Define working directory.
+WORKDIR /etc/nginx
 
-WORKDIR script
-#RUN pip3 install -r requirements.txt
+# Define default command.
+CMD ["nginx"]
 
-
+# Expose ports.
+EXPOSE 80
+EXPOSE 443
